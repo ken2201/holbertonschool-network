@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+#script that displays the listening ports along with the PID 
+netstat -a -p
