@@ -1,0 +1,107 @@
+# What Happens When You Type `https://www.google.com` and Press Enter?
+
+When you type `https://www.google.com` into your browser and press Enter, a series of complex processes work together to load the web page. Let’s break it down step by step to understand what happens under the hood.
+
+---
+
+## **1. DNS Request (Domain Name System)**
+
+The first step is to resolve the human-readable domain name `www.google.com` into a machine-readable IP address (e.g., `142.250.74.196`).
+
+- **Cache Lookup**: Your browser checks its local cache for the IP address.
+- **Resolver Query**: If not found locally, your browser queries a DNS resolver (often provided by your ISP).
+- **Recursive Search**: The resolver contacts other DNS servers (root, TLD, authoritative) to find the correct IP address.
+- **Response**: The resolver returns the IP address to your browser.
+
+---
+
+## **2. TCP/IP Connection**
+
+With the IP address in hand, your browser establishes a connection to the server using the **TCP/IP protocol**.
+
+- **TCP Handshake**: A three-step process occurs:
+  1. SYN (synchronize): Your browser sends a synchronization packet to the server.
+  2. SYN-ACK (synchronize-acknowledge): The server acknowledges and synchronizes.
+  3. ACK (acknowledge): The browser completes the handshake.
+
+- **IP Communication**: Data packets travel between your device and the server over the internet.
+
+---
+
+## **3. Firewall Filtering**
+
+Firewalls along the path (both at your end and the server’s end) monitor and filter traffic to block malicious or unauthorized requests. If your request passes all checks, it proceeds to the server.
+
+---
+
+## **4. HTTPS and SSL/TLS**
+
+Because the URL uses `https://`, the connection is secured using **SSL/TLS encryption**.
+
+1. **Certificate Exchange**: Your browser requests the server’s SSL certificate to verify its authenticity.
+2. **Encryption Setup**: The browser and server agree on an encryption method and establish a secure session.
+3. **Data Protection**: All data exchanged is encrypted to prevent interception.
+
+---
+
+## **5. Load Balancer**
+
+For large-scale websites like Google, requests are routed through a **load balancer**. This ensures:
+
+- **Efficient Distribution**: Requests are spread across multiple servers to prevent overloading.
+- **High Availability**: If one server fails, others can handle the traffic.
+
+---
+
+## **6. Web Server**
+
+The load balancer forwards your request to a **web server** (e.g., Nginx or Apache).
+
+- **Static Content**: The web server serves static files like HTML, CSS, and images directly.
+- **Dynamic Requests**: For more complex requests, the web server forwards them to an application server.
+
+---
+
+## **7. Application Server**
+
+The **application server** processes the dynamic aspects of your request.
+
+- **Logic Handling**: It runs the business logic, processes inputs, and prepares a response.
+- **APIs and Services**: It may interact with other services or APIs to retrieve additional data.
+
+---
+
+## **8. Database Query**
+
+If the request requires data (e.g., search results), the application server queries a **database**.
+
+- **Index Search**: For Google, this involves searching their massive index of the web.
+- **Response**: The database returns the necessary data to the application server.
+
+---
+
+## **9. Response and Rendering**
+
+The processed data is sent back through the chain:
+
+1. **Application Server**: Sends the response to the web server.
+2. **Web Server**: Passes the response to your browser.
+3. **Browser Rendering**:
+   - **HTML Parsing**: The browser builds the DOM (Document Object Model).
+   - **CSS Application**: Styles are applied.
+   - **JavaScript Execution**: Interactive features are enabled.
+
+The result? The web page is displayed on your screen.
+
+---
+
+## **Conclusion**
+
+From DNS resolution to database queries and browser rendering, countless systems collaborate seamlessly to display a simple web page in milliseconds. Each component—from network protocols to load balancers—plays a vital role in ensuring the process is efficient, secure, and reliable.
+
+By understanding these steps, you gain deeper insights into the intricacies of web technology, a valuable skill for any software engineer.
+
+---
+
+If you’re interested in diving deeper, consider writing about this process on platforms like Medium or LinkedIn to showcase your technical knowledge!
+
